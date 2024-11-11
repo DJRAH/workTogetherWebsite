@@ -52,7 +52,7 @@ def home():
     source = "https://maps.googleapis.com/maps/api/staticmap?center=London,EN&size=420x580&maptype=roadmap&zoom=11&"
     source+=markers
     
-    source+="&key=AIzaSyAXk7HN8SgkQqfNtRWcWEa1oEJVq3FXI5E"        #for googleMap static api 
+    source+="#for googleMap static api 
 
     return render_template("index.html", cafes=all_cafes, nbre_lignes=nbre_lignes,nbre_el=len(all_cafes), source=source)
 
