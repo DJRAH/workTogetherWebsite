@@ -110,6 +110,11 @@ gmp-map {
   height: 100%;
 }
 
+.scrollable {
+  overflow-x: hidden;
+  position: relative;
+  overflow-y: auto;
+}
 
 hr {
   margin: 1rem 0;
@@ -4281,6 +4286,7 @@ textarea.form-control-lg {
 .card-img-top,
 .card-img-bottom {
   width: 100%;
+  
 }
 
 .card-img,
