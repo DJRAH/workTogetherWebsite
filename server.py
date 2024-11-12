@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template
+from flask import render_template, request
 import requests
 import sqlalchemy as db
 
@@ -22,12 +22,10 @@ if __name__  == "__name__":
 
 @app.route("/")
 def home():
-  
-    #select all cafes from db
+     #select all cafes from db
     query = t_cafe.select()
     exe = conn.execute(query)
     all_cafes = exe.all()
-    
 
     #put all latitude, longitude of cafes on a marker    
     markers="markers=color:red%7Clabel:S"         
@@ -52,8 +50,18 @@ def home():
     source = "https://maps.googleapis.com/maps/api/staticmap?center=London,EN&size=420x580&maptype=roadmap&zoom=11&"
     source+=markers
     
-    source+="#for googleMap static api 
+    source+="&key="        #for googleMap static api 
 
-    return render_template("index.html", cafes=all_cafes, nbre_lignes=nbre_lignes,nbre_el=len(all_cafes), source=source)
+    return render_template("index.html", cafes=all_cafes, nbre_lignes=nbre_lignes,nbre_el=len(all_cafes), source=source) 
 
+#return render_template("add_form.html")
+@app.route("/login", methods=["POST"])
+def receive_data():
+   adresse = request.form["inputAddress"]
+   state = request.form["inputState"]
+   city = request.form["inputCity"]
+   zip = request.form["inputZip"]
+
+   print(adresse, city,zip,state)
+   return "succes"
 
